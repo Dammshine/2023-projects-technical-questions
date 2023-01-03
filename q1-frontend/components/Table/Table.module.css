@@ -18,3 +18,21 @@
     flex: 1 1 0px;
     flex-direction: column;
 }
+
+.updateMessage {
+    display: flex;
+    flex: 1 1 0px;
+    flex-direction: column;
+}
+
+.updateDates {
+    padding-top: 3px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 10px;
+    color:rgb(23, 78, 136);
+}
+
+.update {
+    display: flex;
+    justify-content: space-between;
+}

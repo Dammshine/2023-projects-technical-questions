@@ -45,15 +45,27 @@ export default function Table() {
       },
       {
         alert: 'Done!',
-        status: '<YOUR NAME>',
+        status: '<Dammshine>',
         updates: []
       }
     ]
   });
+  // console.log("Contents:");
+  console.log(contents);
+  // console.log("useContents:");
+  // console.log(useContents);
+  // return processUpdate(contents.rowContents[0]);
+  const addAlert = (alert: string) => {
+    contents.rowContents.push({
+      alert: "food",
+      status: "",
+      updates: []
+    });
+  }
 
   return (
     <>
-      <AlertModal useContents={useContents} />
+      <AlertModal useContents={useContents}/>
       <div className={styles.myTable}>
         <div className={styles.row}>
           {contents.columnTitles.map((item) => <div className={styles.item} key={item}>{item}</div>)}
@@ -67,11 +79,38 @@ export default function Table() {
               {content.status}
             </div>
             <div className={styles.item}>
-              {/* TODO: add updates */}
+              <ProcessUpdate alert={content.alert} status={content.status} updates={content.updates} />
             </div>
           </div>
         ))}
       </div>
     </>
+  )
+}
+
+/**
+ * Receive object as 
+ *  {
+ *    alert: 'Done!',
+ *    status: '<YOUR NAME>',
+ *    updates: []
+ *  }
+ * 
+ * Output a react node render updates
+ */
+function ProcessUpdate(content: Alert) {
+  return (
+    <div className={styles.item}>
+      {content.updates.map(update => (
+        <div className={styles.update}>
+          <div className={styles.updateMessage}>
+            {update.update}
+          </div>
+          <div className={styles.updateDates}>
+            {update.date}
+          </div>
+        </div>
+      ))}
+    </div>
   )
 }
